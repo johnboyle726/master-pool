@@ -253,7 +253,7 @@ export default function App() {
       .map(e => {
         const result = calcEntry(e.picks, tiersWithGolfers, scoreData)
         const amScore = result.amateurPick ? getAmScore(result.amateurPick, scoreData) : null
-        const isTopAm = amScore !== null && amScore === bestAmScore
+        const isTopAm = picksLocked && amScore !== null && amScore === bestAmScore
         const amateurBonus = isTopAm ? -3 : 0
         const total = result.subtotal + amateurBonus
         return { ...e, ...result, isTopAm, amateurBonus, total }
